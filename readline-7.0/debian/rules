@@ -106,25 +106,28 @@ configure-stamp:
 	mkdir $(builddir)
 	find . -type d | xargs chmod g-s
 	cd $(builddir) && \
-	  CC=$(CC) CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" $(srcdir)/configure \
+	  $(srcdir)/configure \
 		--prefix=/usr\
 		--host=$(DEB_HOST_GNU_TYPE) \
-		--libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+		--libdir=/usr/lib/$(DEB_HOST_MULTIARCH) \
+		CC=$(CC) CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 
 ifneq ($(build32),)
 	rm -rf $(builddir32)
 	mkdir $(builddir32)
 	cd $(builddir32) && \
-	  CC="$(CC32)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" $(srcdir)/configure \
-		--host=$(HOST32) --prefix=/usr
+	$(srcdir)/configure \
+		--host=$(HOST32) --prefix=/usr \
+		CC="$(CC32)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 endif
 
 ifneq ($(build64),)
 	rm -rf $(builddir64)
 	mkdir $(builddir64)
 	cd $(builddir64) && \
-	  CC="$(CC64)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" $(srcdir)/configure \
-		--host=$(HOST64) --prefix=/usr
+	$(srcdir)/configure \
+		--host=$(HOST64) --prefix=/usr \
+		CC="$(CC64)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 endif
 
 	touch configure-stamp
