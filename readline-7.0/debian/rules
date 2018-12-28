@@ -17,28 +17,28 @@ DEB_HOST_MULTIARCH	?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 CROSS=icc
 #endif
 
-ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/i386/powerpc/sparc/s390/))
-  build64 = yes
-  CC64 = $(CROSS) -m64
-  gencontrol_flags = -- \
-	'-Vdevxx:Depends=libc6-dev-$(ARCH64)'
-  ifeq ($(DEB_HOST_ARCH),i386)
-    ARCH64 = amd64
-    HOST64 = x86_64-linux-gnu
-  endif
-  ifeq ($(DEB_HOST_ARCH),powerpc)
-    ARCH64 = ppc64
-    HOST64 = ppc64-linux-gnu
-  endif
-  ifeq ($(DEB_HOST_ARCH),sparc)
-    ARCH64 = sparc64
-    HOST64 = sparc64-linux-gnu
-  endif
-  ifeq ($(DEB_HOST_ARCH),s390)
-    ARCH64 = s390x
-    HOST64 = s390x-linux-gnu
-  endif
-endif
+#ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/i386/powerpc/sparc/s390/))
+#  build64 = yes
+#  CC64 = $(CROSS) -m64
+#  gencontrol_flags = -- \
+#	'-Vdevxx:Depends=libc6-dev-$(ARCH64)'
+#  ifeq ($(DEB_HOST_ARCH),i386)
+#    ARCH64 = amd64
+#    HOST64 = x86_64-linux-gnu
+#  endif
+#  ifeq ($(DEB_HOST_ARCH),powerpc)
+#    ARCH64 = ppc64
+#    HOST64 = ppc64-linux-gnu
+#  endif
+#  ifeq ($(DEB_HOST_ARCH),sparc)
+#    ARCH64 = sparc64
+#    HOST64 = sparc64-linux-gnu
+#  endif
+#  ifeq ($(DEB_HOST_ARCH),s390)
+#    ARCH64 = s390x
+#    HOST64 = s390x-linux-gnu
+#  endif
+#endif
 
 #ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/amd64/ppc64/))
 #   build32 = yes
@@ -70,31 +70,31 @@ SHELL	= bash
 
 p_rl	= libreadline$(soversion)
 #p_rl32	= lib32readline$(soversion)
-p_rl64	= lib64readline$(soversion)
+#p_rl64	= lib64readline$(soversion)
 p_comm	= readline-common
 p_rld	= libreadline-dev
 #p_rld32	= lib32readline-dev
-p_rld64	= lib64readline-dev
+#p_rld64	= lib64readline-dev
 p_doc	= readline-doc
 p_rlfe	= rlfe
 
 d	= debian/tmp
 #d32	= debian/tmp32
-d64	= debian/tmp64
+#d64	= debian/tmp64
 d_rl	= debian/$(p_rl)
 #d_rl32	= debian/$(p_rl32)
-d_rl64	= debian/$(p_rl64)
+#d_rl64	= debian/$(p_rl64)
 d_comm	= debian/$(p_comm)
 d_rld	= debian/$(p_rld)
 #d_rld32	= debian/$(p_rld32)
-d_rld64	= debian/$(p_rld64)
+#d_rld64	= debian/$(p_rld64)
 d_doc	= debian/$(p_doc)
 d_rlfe	= debian/$(p_rlfe)
 
 srcdir		= $(CURDIR)
 builddir	= $(CURDIR)/build
 #builddir32	= $(CURDIR)/build32
-builddir64	= $(CURDIR)/build64
+#builddir64	= $(CURDIR)/build64
 
 default: build
 
@@ -121,14 +121,14 @@ configure-stamp:
 #                 CC="$(CC32)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 # endif
 
-ifneq ($(build64),)
-	rm -rf $(builddir64)
-	mkdir $(builddir64)
-	cd $(builddir64) && \
-	$(srcdir)/configure \
-		--host=$(HOST64) --prefix=/usr \
-		CC="$(CC64)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
-endif
+#ifneq ($(build64),)
+#	rm -rf $(builddir64)
+#	mkdir $(builddir64)
+#	cd $(builddir64) && \
+#	$(srcdir)/configure \
+#		--host=$(HOST64) --prefix=/usr \
+#		CC="$(CC64)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
+#endif
 
 	touch configure-stamp
 
@@ -158,15 +158,15 @@ build-stamp: configure-stamp
 #             SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
 # endif
 
-ifneq ($(build64),)
-	$(MAKE) -C $(builddir64) \
-	    CC="$(CC64)" \
-	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
-	    SHOBJ_CFLAGS="-fpic -D_REENTRANT" \
-	    SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
-	    SHLIB_LIBS="-ltinfo"
-	    SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
-endif
+#ifneq ($(build64),)
+#	$(MAKE) -C $(builddir64) \
+#	    CC="$(CC64)" \
+#	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
+#	    SHOBJ_CFLAGS="-fpic -D_REENTRANT" \
+#	    SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
+#	    SHLIB_LIBS="-ltinfo"
+#	    SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
+#endif
 	$(MAKE) -C $(builddir)/doc info
 
 	touch build-stamp
@@ -195,7 +195,8 @@ clean:
 	dh_testroot
 	rm -f configure*-stamp build*-stamp install-stamp
 	rm -rf autom4te.cache
-	rm -rf $(builddir) $(builddir32) $(builddir64)
+#	rm -rf $(builddir) $(builddir32) $(builddir64)
+	rm -rf $(builddir)
 	rm -rf debian/tmp*
 	rm -f doc/*.dvi
 	rm -f debian/shlibs.local
@@ -314,40 +315,40 @@ endif
 #         mv $(d32)/usr/lib/lib{history,readline}.a $(d_rld32)/$(lib32devdir)/.
 # endif
 
-ifneq ($(build64),)
-	rm -rf $(d64)
-	mkdir -p $(d64)/usr/bin
-	$(MAKE) -C $(builddir64) install \
-	    CC="$(CC64)" \
-	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS) -D_REENTRANT" \
-	    SHOBJ_LDFLAGS='-shared $(LDFLAGS)' \
-	    SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`' \
-	    SHLIB_LIBS=-ltinfo \
-	    DESTDIR=$(CURDIR)/$(d64) \
-	    mandir=/usr/share/man \
-	    infodir=/usr/share/info
+# ifneq ($(build64),)
+#         rm -rf $(d64)
+#         mkdir -p $(d64)/usr/bin
+#         $(MAKE) -C $(builddir64) install \
+#             CC="$(CC64)" \
+#             CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS) -D_REENTRANT" \
+#             SHOBJ_LDFLAGS='-shared $(LDFLAGS)' \
+#             SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`' \
+#             SHLIB_LIBS=-ltinfo \
+#             DESTDIR=$(CURDIR)/$(d64) \
+#             mandir=/usr/share/man \
+#             infodir=/usr/share/info
 
-	dh_installdirs -p$(p_rl64) \
-	    lib64 \
-	    usr/share/doc
-	dh_installdirs -p$(p_rld64) \
-	    usr/share/doc
-	cp -p $(d64)/usr/lib/lib{history,readline}.so.$(libversion) \
-		$(d_rl64)/lib64/
-	ln -s libhistory.so.$(libversion) \
-		$(d_rl64)/lib64/libhistory.so.$(soversion)
-	ln -s libreadline.so.$(libversion) \
-		$(d_rl64)/lib64/libreadline.so.$(soversion)
+#         dh_installdirs -p$(p_rl64) \
+#             lib64 \
+#             usr/share/doc
+#         dh_installdirs -p$(p_rld64) \
+#             usr/share/doc
+#         cp -p $(d64)/usr/lib/lib{history,readline}.so.$(libversion) \
+#                 $(d_rl64)/lib64/
+#         ln -s libhistory.so.$(libversion) \
+#                 $(d_rl64)/lib64/libhistory.so.$(soversion)
+#         ln -s libreadline.so.$(libversion) \
+#                 $(d_rl64)/lib64/libreadline.so.$(soversion)
 
-	dh_installdirs -p$(p_rld64) \
-	    usr/lib64 \
-	    usr/share/doc
-	ln -s /lib64/libhistory.so.$(soversion) \
-		$(d_rld64)/usr/lib64/libhistory.so
-	ln -s /lib64/libreadline.so.$(soversion) \
-		$(d_rld64)/usr/lib64/libreadline.so
-	mv $(d64)/usr/lib/lib{history,readline}.a $(d_rld64)/usr/lib64/.
-endif
+#         dh_installdirs -p$(p_rld64) \
+#             usr/lib64 \
+#             usr/share/doc
+#         ln -s /lib64/libhistory.so.$(soversion) \
+#                 $(d_rld64)/usr/lib64/libhistory.so
+#         ln -s /lib64/libreadline.so.$(soversion) \
+#                 $(d_rld64)/usr/lib64/libreadline.so
+#         mv $(d64)/usr/lib/lib{history,readline}.a $(d_rld64)/usr/lib64/.
+# endif
 
 	: # $(p_doc)
 	mkdir -p $(d_doc)/usr/share/info
@@ -424,20 +425,20 @@ endif
 #         -ls -l $(d_rld)/usr/share/doc/$(p_rl)
 # endif
 
-ifneq ($(build64),)
-	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
-	dh_installdocs -p$(p_rl64) \
-		USAGE debian/inputrc.arrows
-	dh_installchangelogs -p$(p_rl64) CHANGES
-	ln -sf $(p_rl64) $(d_rld64)/usr/share/doc/$(p_rld64)
-	dh_compress -p$(p_rl64) -p$(p_rld64)
-	dh_fixperms -p$(p_rl64) -p$(p_rld64)
-	dh_strip -p$(p_rl64) -p$(p_rld64)
-	dh_makeshlibs -p$(p_rl64)
-	-dh_shlibdeps -p$(p_rl64) -p$(p_rld64) \
-		 -L $(p_rl64) -l $(d_rl64)/lib
-	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
-endif
+#ifneq ($(build64),)
+#	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
+#	dh_installdocs -p$(p_rl64) \
+#		USAGE debian/inputrc.arrows
+#	dh_installchangelogs -p$(p_rl64) CHANGES
+#	ln -sf $(p_rl64) $(d_rld64)/usr/share/doc/$(p_rld64)
+#	dh_compress -p$(p_rl64) -p$(p_rld64)
+#	dh_fixperms -p$(p_rl64) -p$(p_rld64)
+#	dh_strip -p$(p_rl64) -p$(p_rld64)
+#	dh_makeshlibs -p$(p_rl64)
+#	-dh_shlibdeps -p$(p_rl64) -p$(p_rld64) \
+#		 -L $(p_rl64) -l $(d_rl64)/lib
+#	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
+#endif
 
 	dh_installdeb -s
 	dh_gencontrol -s $(gencontrol_flags)
