@@ -12,9 +12,9 @@ DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_HOST_MULTIARCH	?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
-CROSS=$(DEB_HOST_GNU_TYPE)-gcc
+CROSS=icc
 else
-CROSS=gcc
+CROSS=icc
 endif
 
 ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/i386/powerpc/sparc/s390/))
@@ -40,22 +40,22 @@ ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/i386/powerpc/sparc/s390/))
   endif
 endif
 
-ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/amd64/ppc64/))
-  build32 = yes
-  CC32 = $(CROSS) -m32
-  lib32dir = lib32
-  lib32devdir = usr/lib32
-  gencontrol_flags = -- \
-	'-Vdevxx:Depends=libc6-dev-$(ARCH32)'
-  ifeq ($(DEB_HOST_ARCH),amd64)
-    ARCH32 = i386
-    HOST32 = i486-linux-gnu
-  endif
-  ifeq ($(DEB_HOST_ARCH),ppc64)
-    ARCH32 = powerpc
-    HOST32 = powerpc-linux-gnu
-  endif
-endif
+#ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/amd64/ppc64/))
+#   build32 = yes
+#   CC32 = $(CROSS) -m32
+#   lib32dir = lib32
+#   lib32devdir = usr/lib32
+#   gencontrol_flags = -- \
+#         '-Vdevxx:Depends=libc6-dev-$(ARCH32)'
+#   ifeq ($(DEB_HOST_ARCH),amd64)
+#     ARCH32 = i386
+#     HOST32 = i486-linux-gnu
+#   endif
+#   ifeq ($(DEB_HOST_ARCH),ppc64)
+#     ARCH32 = powerpc
+#     HOST32 = powerpc-linux-gnu
+#   endif
+# endif
 
 unexport CPPFLAGS CFLAGS LDFLAGS
 
@@ -69,31 +69,31 @@ CC	= $(CROSS)
 SHELL	= bash
 
 p_rl	= libreadline$(soversion)
-p_rl32	= lib32readline$(soversion)
+#p_rl32	= lib32readline$(soversion)
 p_rl64	= lib64readline$(soversion)
 p_comm	= readline-common
 p_rld	= libreadline-dev
-p_rld32	= lib32readline-dev
+#p_rld32	= lib32readline-dev
 p_rld64	= lib64readline-dev
 p_doc	= readline-doc
 p_rlfe	= rlfe
 
 d	= debian/tmp
-d32	= debian/tmp32
+#d32	= debian/tmp32
 d64	= debian/tmp64
 d_rl	= debian/$(p_rl)
-d_rl32	= debian/$(p_rl32)
+#d_rl32	= debian/$(p_rl32)
 d_rl64	= debian/$(p_rl64)
 d_comm	= debian/$(p_comm)
 d_rld	= debian/$(p_rld)
-d_rld32	= debian/$(p_rld32)
+#d_rld32	= debian/$(p_rld32)
 d_rld64	= debian/$(p_rld64)
 d_doc	= debian/$(p_doc)
 d_rlfe	= debian/$(p_rlfe)
 
 srcdir		= $(CURDIR)
 builddir	= $(CURDIR)/build
-builddir32	= $(CURDIR)/build32
+#builddir32	= $(CURDIR)/build32
 builddir64	= $(CURDIR)/build64
 
 default: build
@@ -112,14 +112,14 @@ configure-stamp:
 		--libdir=/usr/lib/$(DEB_HOST_MULTIARCH) \
 		CC=$(CC) CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 
-ifneq ($(build32),)
-	rm -rf $(builddir32)
-	mkdir $(builddir32)
-	cd $(builddir32) && \
-	$(srcdir)/configure \
-		--host=$(HOST32) --prefix=/usr \
-		CC="$(CC32)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
-endif
+# ifneq ($(build32),)
+#         rm -rf $(builddir32)
+#         mkdir $(builddir32)
+#         cd $(builddir32) && \
+#         $(srcdir)/configure \
+#                 --host=$(HOST32) --prefix=/usr \
+#                 CC="$(CC32)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
+# endif
 
 ifneq ($(build64),)
 	rm -rf $(builddir64)
@@ -148,15 +148,15 @@ build-stamp: configure-stamp
 	    SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
 	    SHLIB_LIBS="-ltinfo"
 
-ifneq ($(build32),)
-	$(MAKE) -C $(builddir32) \
-	    CC="$(CC32)" \
-	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
-	    SHOBJ_CFLAGS="-fPIC -D_REENTRANT" \
-	    SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
-	    SHLIB_LIBS="-ltinfo"
-	    SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
-endif
+# ifneq ($(build32),)
+#         $(MAKE) -C $(builddir32) \
+#             CC="$(CC32)" \
+#             CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
+#             SHOBJ_CFLAGS="-fPIC -D_REENTRANT" \
+#             SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
+#             SHLIB_LIBS="-ltinfo"
+#             SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
+# endif
 
 ifneq ($(build64),)
 	$(MAKE) -C $(builddir64) \
@@ -281,38 +281,38 @@ ifeq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
 	cp -p debian/rlfe.1 $(d_rlfe)/usr/share/man/man1/.
 endif
 
-ifneq ($(build32),)
-	rm -rf $(d32)
-	mkdir -p $(d32)/usr/bin
-	$(MAKE) -C $(builddir32) install \
-	    CC="$(CC32)" \
-	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS) -D_REENTRANT" \
-	    SHOBJ_LDFLAGS='-shared $(LDFLAGS)' \
-	    SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`' \
-	    SHLIB_LIBS=-ltinfo \
-	    DESTDIR=$(CURDIR)/$(d32) \
-	    mandir=/usr/share/man \
-	    infodir=/usr/share/info
+# ifneq ($(build32),)
+#         rm -rf $(d32)
+#         mkdir -p $(d32)/usr/bin
+#         $(MAKE) -C $(builddir32) install \
+#             CC="$(CC32)" \
+#             CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS) -D_REENTRANT" \
+#             SHOBJ_LDFLAGS='-shared $(LDFLAGS)' \
+#             SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`' \
+#             SHLIB_LIBS=-ltinfo \
+#             DESTDIR=$(CURDIR)/$(d32) \
+#             mandir=/usr/share/man \
+#             infodir=/usr/share/info
 
-	dh_installdirs -p$(p_rl32) \
-	    $(lib32dir) \
-	    usr/share/doc
-	cp -p $(d32)/usr/lib/lib{history,readline}.so.$(libversion) \
-		$(d_rl32)/$(lib32dir)/
-	ln -s libhistory.so.$(libversion) \
-		$(d_rl32)/$(lib32dir)/libhistory.so.$(soversion)
-	ln -s libreadline.so.$(libversion) \
-		$(d_rl32)/$(lib32dir)/libreadline.so.$(soversion)
+#         dh_installdirs -p$(p_rl32) \
+#             $(lib32dir) \
+#             usr/share/doc
+#         cp -p $(d32)/usr/lib/lib{history,readline}.so.$(libversion) \
+#                 $(d_rl32)/$(lib32dir)/
+#         ln -s libhistory.so.$(libversion) \
+#                 $(d_rl32)/$(lib32dir)/libhistory.so.$(soversion)
+#         ln -s libreadline.so.$(libversion) \
+#                 $(d_rl32)/$(lib32dir)/libreadline.so.$(soversion)
 
-	dh_installdirs -p$(p_rld32) \
-	    $(lib32devdir) \
-	    usr/share/doc
-	ln -s /$(lib32dir)/libhistory.so.$(soversion) \
-		$(d_rld32)/$(lib32devdir)/libhistory.so
-	ln -s /$(lib32dir)/libreadline.so.$(soversion) \
-		$(d_rld32)/$(lib32devdir)/libreadline.so
-	mv $(d32)/usr/lib/lib{history,readline}.a $(d_rld32)/$(lib32devdir)/.
-endif
+#         dh_installdirs -p$(p_rld32) \
+#             $(lib32devdir) \
+#             usr/share/doc
+#         ln -s /$(lib32dir)/libhistory.so.$(soversion) \
+#                 $(d_rld32)/$(lib32devdir)/libhistory.so
+#         ln -s /$(lib32dir)/libreadline.so.$(soversion) \
+#                 $(d_rld32)/$(lib32devdir)/libreadline.so
+#         mv $(d32)/usr/lib/lib{history,readline}.a $(d_rld32)/$(lib32devdir)/.
+# endif
 
 ifneq ($(build64),)
 	rm -rf $(d64)
@@ -409,20 +409,20 @@ ifeq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
 		 -L $(p_rl) -l $(d_rl)/lib
 endif
 
-ifneq ($(build32),)
-	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
-	dh_installdocs -p$(p_rl32) \
-		USAGE debian/inputrc.arrows
-	dh_installchangelogs -p$(p_rl32) CHANGES
-	ln -sf $(p_rl32) $(d_rld32)/usr/share/doc/$(p_rld32)
-	dh_compress -p$(p_rl32) -p$(p_rld32)
-	dh_fixperms -p$(p_rl32) -p$(p_rld32)
-	dh_strip -p$(p_rl32) -p$(p_rld32)
-	dh_makeshlibs -p$(p_rl32)
-	-dh_shlibdeps -p$(p_rl32) -p$(p_rld32) \
-		 -L $(p_rl32) -l $(d_rl32)/lib
-	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
-endif
+# ifneq ($(build32),)
+#         -ls -l $(d_rld)/usr/share/doc/$(p_rl)
+#         dh_installdocs -p$(p_rl32) \
+#                 USAGE debian/inputrc.arrows
+#         dh_installchangelogs -p$(p_rl32) CHANGES
+#         ln -sf $(p_rl32) $(d_rld32)/usr/share/doc/$(p_rld32)
+#         dh_compress -p$(p_rl32) -p$(p_rld32)
+#         dh_fixperms -p$(p_rl32) -p$(p_rld32)
+#         dh_strip -p$(p_rl32) -p$(p_rld32)
+#         dh_makeshlibs -p$(p_rl32)
+#         -dh_shlibdeps -p$(p_rl32) -p$(p_rld32) \
+#                  -L $(p_rl32) -l $(d_rl32)/lib
+#         -ls -l $(d_rld)/usr/share/doc/$(p_rl)
+# endif
 
 ifneq ($(build64),)
 	-ls -l $(d_rld)/usr/share/doc/$(p_rl)
