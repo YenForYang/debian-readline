@@ -11,11 +11,11 @@ DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_HOST_MULTIARCH	?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
-ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
+#ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
+#CROSS=icc
+#else
 CROSS=icc
-else
-CROSS=icc
-endif
+#endif
 
 ifneq (,$(findstring /$(DEB_HOST_ARCH)/,/i386/powerpc/sparc/s390/))
   build64 = yes
@@ -144,7 +144,7 @@ build-stamp: configure-stamp
 	dh_testdir
 	$(MAKE) -C $(builddir) \
 	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
-	    SHOBJ_CFLAGS="-fPIC -D_REENTRANT" \
+	    SHOBJ_CFLAGS="-fpic -D_REENTRANT" \
 	    SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
 	    SHLIB_LIBS="-ltinfo"
 
@@ -152,7 +152,7 @@ build-stamp: configure-stamp
 #         $(MAKE) -C $(builddir32) \
 #             CC="$(CC32)" \
 #             CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
-#             SHOBJ_CFLAGS="-fPIC -D_REENTRANT" \
+#             SHOBJ_CFLAGS="-fpic -D_REENTRANT" \
 #             SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
 #             SHLIB_LIBS="-ltinfo"
 #             SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
@@ -162,7 +162,7 @@ ifneq ($(build64),)
 	$(MAKE) -C $(builddir64) \
 	    CC="$(CC64)" \
 	    CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
-	    SHOBJ_CFLAGS="-fPIC -D_REENTRANT" \
+	    SHOBJ_CFLAGS="-fpic -D_REENTRANT" \
 	    SHOBJ_LDFLAGS='$(LDFLAGS) -shared' \
 	    SHLIB_LIBS="-ltinfo"
 	    SHLIB_XLDFLAGS='-Wl,-soname,`echo $$@ | sed s/\\..$$$$//`'
