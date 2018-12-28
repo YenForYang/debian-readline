@@ -211,8 +211,8 @@ __sorry_hpux_libcurses_is_totally_broken_in_10_10();
 tgetent((char *)0, (char *)0);
 #endif
 ],,
-LIBS="-ltinfo $olibs"
-AC_CHECKING(libtinfo)
+LIBS="-ltermcap $olibs"
+AC_CHECKING(libtermcap)
 AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
 LIBS="-ltermlib $olibs"
 AC_CHECKING(libtermlib)

@@ -3,7 +3,8 @@ Source: readline
 Version: 7.0-5
 Architecture: amd64
 Maintainer: Matthias Klose <doko@debian.org>
-Installed-Size: 22
+Installed-Size: 58
+Depends: libc6 (>= 2.15), libgcc1 (>= 1:3.0), libreadline7
 Provides: readline-editor
 Section: utils
 Priority: optional

@@ -3,7 +3,7 @@ Source: readline
 Version: 7.0-5
 Architecture: all
 Maintainer: Matthias Klose <doko@debian.org>
-Installed-Size: 88
+Installed-Size: 91
 Depends: dpkg (>= 1.15.4) | install-info
 Suggests: readline-doc
 Conflicts: libreadline-common, libreadline5 (<< 5.0-11)

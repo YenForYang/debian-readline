@@ -133,7 +133,7 @@ int f;
 {
   if (f < 0)
     return;
-#if defined(I_PUSH) && defined(HAVE_SVR4_PTYS) && !defined(sgi) && !defined(linux) && !defined(__osf__) && !defined(M_UNIX) && !defined(__FreeBSD_kernel__)
+#if defined(I_PUSH) && defined(HAVE_SVR4_PTYS) && !defined(sgi) && !defined(linux) && !defined(__osf__) && !defined(M_UNIX)
   if (ioctl(f, I_PUSH, "ptem"))
     Panic(errno, "InitPTY: cannot I_PUSH ptem");
   if (ioctl(f, I_PUSH, "ldterm"))
@@ -254,7 +254,7 @@ char **ttyn;
 #if defined(HAVE_GETPT) && defined(linux)
   int getpt __P((void));
 #endif
-  sighandler_t sigcld;
+  sigret_t (*sigcld)__P(SIGPROTOARG);
 
   strcpy(PtyName, "/dev/ptmx");
 #if defined(HAVE_GETPT) && defined(linux)

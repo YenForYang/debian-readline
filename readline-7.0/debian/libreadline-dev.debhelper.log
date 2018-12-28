@@ -8,3 +8,11 @@ dh_installdeb
 dh_gencontrol
 dh_md5sums
 dh_builddeb
+dh_fixperms
+dh_strip
+dh_compress
+dh_shlibdeps
+dh_installdeb
+dh_gencontrol
+dh_md5sums
+dh_builddeb

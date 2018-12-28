@@ -6,5 +6,5 @@ f8070ceeffc2364fb6a943f6f68a5e58  usr/include/readline/keymaps.h
 d9119f3872939a3ea5a26b1a8de6a913  usr/include/readline/rlstdc.h
 e194e93b2d732981066cafa2f0a47b4f  usr/include/readline/rltypedefs.h
 4b810af2c83168d3cd86815a6bbeaaff  usr/include/readline/tilde.h
-ef25be85903faca4ee240143d382bb98  usr/lib/x86_64-linux-gnu/libhistory.a
-40f611f823ad15a9cd66703e5b549172  usr/lib/x86_64-linux-gnu/libreadline.a
+3b7fb729cc09874f0d08115d50a2d1c7  usr/lib/x86_64-linux-gnu/libhistory.a
+8a1dddc2c80e459024b157c5f36c1149  usr/lib/x86_64-linux-gnu/libreadline.a

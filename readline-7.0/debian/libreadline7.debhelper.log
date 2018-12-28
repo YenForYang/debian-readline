@@ -12,3 +12,15 @@ dh_installdeb
 dh_gencontrol
 dh_md5sums
 dh_builddeb
+dh_installdocs
+dh_installchangelogs
+dh_installexamples
+dh_fixperms
+dh_strip
+dh_compress
+dh_makeshlibs
+dh_shlibdeps
+dh_installdeb
+dh_gencontrol
+dh_md5sums
+dh_builddeb

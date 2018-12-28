@@ -154,25 +154,19 @@ struct termios orig_term;
 static pid_t child = -1;
 
 static void
-finish_up()
+sig_child (int signo)
 {
+  int status;
+  wait (&status);
   if (hist_file != 0)
     {
       write_history (hist_file);
       if (hist_size)
 	history_truncate_file (hist_file, hist_size);
     }
+  DPRINT0 ("(Child process died.)\n");
   tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
   exit (0);
-}
-
-static void
-sig_child (int signo)
-{
-  int status;
-  wait (&status);
-  DPRINT0 ("(Child process died.)\n");
-  finish_up();
 }
 
 volatile int propagate_sigwinch = 0;
@@ -273,7 +267,7 @@ static void maybe_emphasize_input (int on)
   if (on == current_emphasize_input
       || (on && ! do_emphasize_input))
     return;
-  fprintf (rl_outstream, "%s", on ? start_input_mode : end_input_mode);
+  fprintf (rl_outstream, on ? start_input_mode : end_input_mode);
   fflush (rl_outstream);
   current_emphasize_input = on;
 }
@@ -716,7 +710,8 @@ main(int argc, char** argv)
 	  if (count <= 0)
 	    {
 	      DPRINT0 ("(Connection closed by foreign host.)\n");
-              finish_up();
+	      tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
+	      exit (0);
 	    }
 	  old_count = buf_count;
 

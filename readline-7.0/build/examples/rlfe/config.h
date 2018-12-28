@@ -47,7 +47,7 @@
  * even if running as root (e.g. on TiVo).
  */
 #define PTYMODE 0620
-#define PTYGROUP 5
+#define PTYGROUP 0
 /* #undef PTYROFS */
 
 /*
@@ -235,7 +235,7 @@
  * If the select return value doesn't treat a descriptor that is
  * usable for reading and writing as two hits, define SELECT_BROKEN.
  */
-#define SELECT_BROKEN 1
+/* #undef SELECT_BROKEN */
 
 /*
  * Define this if your system supports named pipes.

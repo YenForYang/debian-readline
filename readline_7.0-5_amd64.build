@@ -1,0 +1,1127 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package readline
+dpkg-buildpackage: info: source version 7.0-5
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Matthias Klose <doko@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using patch list from debian/patches/series
+dpkg-source: info: applying readline70-001.diff
+dpkg-source: info: applying readline70-002.diff
+dpkg-source: info: applying readline70-003.diff
+dpkg-source: info: applying rl-attribute.diff
+dpkg-source: info: applying rl-header.diff
+dpkg-source: info: applying rl-no-cross-check.diff
+dpkg-source: info: applying rl-no-rpath.diff
+dpkg-source: info: applying rlfe-history.diff
+dpkg-source: info: applying rlfe-kfreebsd.diff
+dpkg-source: info: applying rlfe-tinfo.diff
+dpkg-source: info: applying fix-wformat-security.diff
+dpkg-source: info: applying configure-tinfo.diff
+dpkg-source: info: applying rlfe-signal-rvt.diff
+dpkg-source: info: applying readline70-004.diff
+dpkg-source: info: applying readline70-005.diff
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f configure*-stamp build*-stamp install-stamp
+rm -rf autom4te.cache
+rm -rf /dev/shm/debian-readline/readline-7.0/build
+rm -rf debian/tmp*
+rm -f doc/*.dvi
+rm -f debian/shlibs.local
+find . -type d | xargs chmod g-s
+rm -f support/config.guess support/config.sub
+dh_clean
+FAKEROOTKEY=1109803524 LD_LIBRARY_PATH=:/opt/intel/lib/intel64:/opt/intel/compilers_and_libraries/linux/mpi/intel64/libfabric/lib:/opt/intel/compilers_and_libraries/linux/mpi/intel64/lib/release:/opt/intel/compilers_and_libraries/linux/mpi/intel64/lib:/opt/intel/tbb/lib/intel64/gcc4.7 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh_testdir
+cp -p /usr/share/misc/config.* ./support/
+rm -rf /dev/shm/debian-readline/readline-7.0/build
+mkdir /dev/shm/debian-readline/readline-7.0/build
+find . -type d | xargs chmod g-s
+cd /dev/shm/debian-readline/readline-7.0/build && \
+  /dev/shm/debian-readline/readline-7.0/configure \
+	--prefix=/usr\
+	--host=x86_64-linux-gnu \
+	--libdir=/usr/lib/x86_64-linux-gnu \
+	CC=icc CFLAGS="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw" CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2"
+configure: loading site script /usr/share/config.site
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+
+Beginning configuration for readline-7.0 for x86_64-pc-linux-gnu
+
+checking whether make sets $(MAKE)... yes
+checking for x86_64-linux-gnu-gcc... ccache icc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether ccache icc accepts -g... yes
+checking for ccache icc option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache /usr/bin/cpp.intel
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking minix/config.h usability... no
+checking minix/config.h presence... no
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking whether ccache icc needs -traditional... no
+checking for a BSD-compatible install... /usr/bin/install
+checking for x86_64-linux-gnu-ar... xiar
+checking for x86_64-linux-gnu-ranlib... x86_64-linux-gnu-ranlib
+checking for an ANSI C-conforming const... yes
+checking for function prototypes... yes
+checking whether char is unsigned... no
+checking for working volatile... yes
+checking return type of signal handlers... void
+checking for size_t... yes
+checking for ssize_t... yes
+checking for ANSI C header files... (cached) yes
+checking whether stat file-mode macros are broken... no
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking for fcntl... yes
+checking for kill... yes
+checking for lstat... yes
+checking for readlink... yes
+checking for memmove... yes
+checking for pselect... yes
+checking for putenv... yes
+checking for select... yes
+checking for setenv... yes
+checking for setlocale... yes
+checking for strcasecmp... yes
+checking for strpbrk... yes
+checking for tcgetattr... yes
+checking for vsnprintf... yes
+checking for isascii... yes
+checking for isxdigit... yes
+checking for getpwent... yes
+checking for getpwnam... yes
+checking for getpwuid... yes
+checking for uid_t in sys/types.h... yes
+checking for unistd.h... (cached) yes
+checking for working chown... yes
+checking for working strcoll... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking varargs.h usability... no
+checking varargs.h presence... no
+checking for varargs.h... no
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+checking stdbool.h usability... yes
+checking stdbool.h presence... yes
+checking for stdbool.h... yes
+checking for string.h... (cached) yes
+checking for strings.h... (cached) yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking pwd.h usability... yes
+checking pwd.h presence... yes
+checking for pwd.h... yes
+checking for memory.h... (cached) yes
+checking termcap.h usability... yes
+checking termcap.h presence... yes
+checking for termcap.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking termio.h usability... yes
+checking termio.h presence... yes
+checking for termio.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/pte.h usability... no
+checking sys/pte.h presence... no
+checking for sys/pte.h... no
+checking sys/stream.h usability... no
+checking sys/stream.h presence... no
+checking for sys/stream.h... no
+checking sys/select.h usability... yes
+checking sys/select.h presence... yes
+checking for sys/select.h... yes
+checking sys/file.h usability... yes
+checking sys/file.h presence... yes
+checking for sys/file.h... yes
+checking for sys/ptem.h... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for type of signal functions... posix
+checking if signal handlers must be reinstalled when invoked... no
+checking for presence of POSIX-style sigsetjmp/siglongjmp... present
+checking for lstat... yes
+checking whether or not strcoll and strcmp differ... no
+checking whether the ctype macros accept non-ascii characters... yes
+checking whether getpw functions are declared in pwd.h... yes
+checking whether termios.h defines TIOCGWINSZ... no
+checking whether sys/ioctl.h defines TIOCGWINSZ... yes
+checking for sig_atomic_t in signal.h... yes
+checking whether signal handlers are of type void... yes
+checking for TIOCSTAT in sys/ioctl.h... no
+checking for FIONREAD in sys/ioctl.h... yes
+checking for speed_t in sys/types.h... no
+checking for struct winsize in sys/ioctl.h and termios.h... sys/ioctl.h
+checking for struct dirent.d_ino... yes
+checking for struct dirent.d_fileno... yes
+checking libaudit.h usability... yes
+checking libaudit.h presence... yes
+checking for libaudit.h... yes
+checking whether AUDIT_USER_TTY is declared... yes
+checking for tgetent... no
+checking for tgetent in -ltinfo... yes
+checking which library has the termcap functions... using libtinfo
+checking wctype.h usability... yes
+checking wctype.h presence... yes
+checking for wctype.h... yes
+checking wchar.h usability... yes
+checking wchar.h presence... yes
+checking for wchar.h... yes
+checking langinfo.h usability... yes
+checking langinfo.h presence... yes
+checking for langinfo.h... yes
+checking mbstr.h usability... no
+checking mbstr.h presence... no
+checking for mbstr.h... no
+checking for mbrlen... yes
+checking for mbscasecmp... no
+checking for mbscmp... no
+checking for mbsnrtowcs... yes
+checking for mbsrtowcs... yes
+checking for mbschr... no
+checking for wcrtomb... yes
+checking for wcscoll... yes
+checking for wcsdup... yes
+checking for wcwidth... yes
+checking for wctype... yes
+checking for wcswidth... yes
+checking whether mbrtowc and mbstate_t are properly declared... yes
+checking for iswlower... yes
+checking for iswupper... yes
+checking for towlower... yes
+checking for towupper... yes
+checking for iswctype... yes
+checking for nl_langinfo and CODESET... yes
+checking for wchar_t in wchar.h... yes
+checking for wctype_t in wctype.h... yes
+checking for wint_t in wctype.h... yes
+checking for wcwidth broken with unicode combining characters... no
+checking configuration for building shared libraries... supported
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating doc/Makefile
+config.status: creating examples/Makefile
+config.status: creating shlib/Makefile
+config.status: creating readline.pc
+config.status: creating config.h
+config.status: executing default commands
+touch configure-stamp
+dh_testdir
+/usr/bin/make -C /dev/shm/debian-readline/readline-7.0/build \
+    CFLAGS="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw" CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2" \
+    SHOBJ_CFLAGS="-fpic -D_REENTRANT" \
+    SHOBJ_LDFLAGS=' -shared' \
+    SHLIB_LIBS="-ltinfo"
+make[1]: Entering directory '/dev/shm/debian-readline/readline-7.0/build'
+rm -f readline.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/readline.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.15 (CPU)       0.00 (elapsed)
+Back end time                        0.05 (CPU)       0.00 (elapsed)
+Total compilation time               0.19 (CPU)       0.00 (elapsed)
+rm -f vi_mode.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/vi_mode.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.15 (CPU)       0.00 (elapsed)
+Back end time                        0.10 (CPU)       0.00 (elapsed)
+Total compilation time               0.25 (CPU)       0.00 (elapsed)
+rm -f funmap.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/funmap.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.07 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.09 (CPU)       0.00 (elapsed)
+rm -f keymaps.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/keymaps.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+rm -f parens.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/parens.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       1.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.09 (CPU)       1.00 (elapsed)
+rm -f search.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/search.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.16 (CPU)       0.00 (elapsed)
+rm -f rltty.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/rltty.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.13 (CPU)       0.00 (elapsed)
+rm -f complete.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/complete.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.18 (CPU)       1.00 (elapsed)
+Back end time                        0.10 (CPU)       0.00 (elapsed)
+Total compilation time               0.29 (CPU)       1.00 (elapsed)
+rm -f bind.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/bind.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.16 (CPU)       0.00 (elapsed)
+Back end time                        0.13 (CPU)       0.00 (elapsed)
+Total compilation time               0.28 (CPU)       0.00 (elapsed)
+rm -f isearch.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/isearch.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.13 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.17 (CPU)       0.00 (elapsed)
+rm -f display.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/display.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.17 (CPU)       0.00 (elapsed)
+Back end time                        0.10 (CPU)       0.00 (elapsed)
+Total compilation time               0.27 (CPU)       0.00 (elapsed)
+rm -f signals.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/signals.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.13 (CPU)       0.00 (elapsed)
+rm -f util.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/util.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       1.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.16 (CPU)       1.00 (elapsed)
+rm -f kill.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/kill.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.14 (CPU)       0.00 (elapsed)
+rm -f undo.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/undo.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.12 (CPU)       0.00 (elapsed)
+rm -f macro.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/macro.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.12 (CPU)       0.00 (elapsed)
+rm -f input.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/input.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.14 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.18 (CPU)       0.00 (elapsed)
+rm -f callback.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/callback.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+rm -f terminal.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/terminal.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.15 (CPU)       0.00 (elapsed)
+rm -f text.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/text.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.14 (CPU)       0.00 (elapsed)
+Back end time                        0.07 (CPU)       0.00 (elapsed)
+Total compilation time               0.21 (CPU)       0.00 (elapsed)
+rm -f nls.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/nls.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.11 (CPU)       0.00 (elapsed)
+rm -f misc.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/misc.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.16 (CPU)       0.00 (elapsed)
+rm -f history.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/history.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.12 (CPU)       0.00 (elapsed)
+rm -f histexpand.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/histexpand.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.13 (CPU)       0.00 (elapsed)
+Back end time                        0.07 (CPU)       0.00 (elapsed)
+Total compilation time               0.19 (CPU)       0.00 (elapsed)
+rm -f histfile.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/histfile.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.14 (CPU)       0.00 (elapsed)
+rm -f histsearch.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/histsearch.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.09 (CPU)       0.00 (elapsed)
+rm -f shell.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/shell.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+rm -f mbutil.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/mbutil.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.15 (CPU)       0.00 (elapsed)
+rm -f tilde.o
+ccache icc -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -DREADLINE_LIBRARY -c /dev/shm/debian-readline/readline-7.0/tilde.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.06 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.08 (CPU)       0.00 (elapsed)
+rm -f colors.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/colors.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+rm -f parse-colors.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/parse-colors.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+rm -f xmalloc.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/xmalloc.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.05 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.06 (CPU)       0.00 (elapsed)
+rm -f xfree.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/xfree.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.03 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.04 (CPU)       0.00 (elapsed)
+rm -f compat.o
+ccache icc -c -DHAVE_CONFIG_H   -I. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw /dev/shm/debian-readline/readline-7.0/compat.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.03 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.04 (CPU)       0.00 (elapsed)
+rm -f libreadline.a
+xiar cr libreadline.a readline.o vi_mode.o funmap.o keymaps.o parens.o search.o rltty.o complete.o bind.o isearch.o display.o signals.o util.o kill.o undo.o macro.o input.o callback.o terminal.o text.o nls.o misc.o history.o histexpand.o histfile.o histsearch.o shell.o mbutil.o tilde.o colors.o parse-colors.o xmalloc.o xfree.o compat.o
+xiar: executing 'x86_64-linux-gnu-ar'
+test -n "x86_64-linux-gnu-ranlib" && x86_64-linux-gnu-ranlib libreadline.a
+rm -f libhistory.a
+xiar cr libhistory.a history.o histexpand.o histfile.o histsearch.o shell.o mbutil.o xmalloc.o xfree.o
+xiar: executing 'x86_64-linux-gnu-ar'
+test -n "x86_64-linux-gnu-ranlib" && x86_64-linux-gnu-ranlib libhistory.a
+test -d shlib || mkdir shlib
+( cd shlib ; /usr/bin/make -iw all )
+make[2]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/shlib'
+rm -f readline.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o readline.o /dev/shm/debian-readline/readline-7.0/readline.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.15 (CPU)       0.00 (elapsed)
+Back end time                        0.05 (CPU)       0.00 (elapsed)
+Total compilation time               0.20 (CPU)       0.00 (elapsed)
+mv readline.o readline.so
+rm -f vi_mode.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o vi_mode.o /dev/shm/debian-readline/readline-7.0/vi_mode.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.15 (CPU)       0.00 (elapsed)
+Back end time                        0.10 (CPU)       0.00 (elapsed)
+Total compilation time               0.26 (CPU)       0.00 (elapsed)
+mv vi_mode.o vi_mode.so
+rm -f funmap.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o funmap.o /dev/shm/debian-readline/readline-7.0/funmap.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.07 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.09 (CPU)       0.00 (elapsed)
+mv funmap.o funmap.so
+rm -f keymaps.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o keymaps.o /dev/shm/debian-readline/readline-7.0/keymaps.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.11 (CPU)       0.00 (elapsed)
+mv keymaps.o keymaps.so
+rm -f parens.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o parens.o /dev/shm/debian-readline/readline-7.0/parens.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.09 (CPU)       0.00 (elapsed)
+mv parens.o parens.so
+rm -f search.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o search.o /dev/shm/debian-readline/readline-7.0/search.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.16 (CPU)       0.00 (elapsed)
+mv search.o search.so
+rm -f rltty.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o rltty.o /dev/shm/debian-readline/readline-7.0/rltty.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.13 (CPU)       0.00 (elapsed)
+mv rltty.o rltty.so
+rm -f complete.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o complete.o /dev/shm/debian-readline/readline-7.0/complete.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.18 (CPU)       0.00 (elapsed)
+Back end time                        0.10 (CPU)       0.00 (elapsed)
+Total compilation time               0.29 (CPU)       0.00 (elapsed)
+mv complete.o complete.so
+rm -f bind.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o bind.o /dev/shm/debian-readline/readline-7.0/bind.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.16 (CPU)       0.00 (elapsed)
+Back end time                        0.12 (CPU)       0.00 (elapsed)
+Total compilation time               0.28 (CPU)       0.00 (elapsed)
+mv bind.o bind.so
+rm -f isearch.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o isearch.o /dev/shm/debian-readline/readline-7.0/isearch.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.13 (CPU)       1.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.17 (CPU)       1.00 (elapsed)
+mv isearch.o isearch.so
+rm -f display.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o display.o /dev/shm/debian-readline/readline-7.0/display.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.17 (CPU)       0.00 (elapsed)
+Back end time                        0.10 (CPU)       0.00 (elapsed)
+Total compilation time               0.27 (CPU)       0.00 (elapsed)
+mv display.o display.so
+rm -f signals.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o signals.o /dev/shm/debian-readline/readline-7.0/signals.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.13 (CPU)       0.00 (elapsed)
+mv signals.o signals.so
+rm -f util.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o util.o /dev/shm/debian-readline/readline-7.0/util.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.16 (CPU)       0.00 (elapsed)
+mv util.o util.so
+rm -f kill.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o kill.o /dev/shm/debian-readline/readline-7.0/kill.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.14 (CPU)       0.00 (elapsed)
+mv kill.o kill.so
+rm -f undo.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o undo.o /dev/shm/debian-readline/readline-7.0/undo.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.12 (CPU)       0.00 (elapsed)
+mv undo.o undo.so
+rm -f macro.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o macro.o /dev/shm/debian-readline/readline-7.0/macro.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.12 (CPU)       0.00 (elapsed)
+mv macro.o macro.so
+rm -f input.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o input.o /dev/shm/debian-readline/readline-7.0/input.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.15 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.18 (CPU)       0.00 (elapsed)
+mv input.o input.so
+rm -f callback.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o callback.o /dev/shm/debian-readline/readline-7.0/callback.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+mv callback.o callback.so
+rm -f terminal.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o terminal.o /dev/shm/debian-readline/readline-7.0/terminal.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.15 (CPU)       0.00 (elapsed)
+mv terminal.o terminal.so
+rm -f text.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o text.o /dev/shm/debian-readline/readline-7.0/text.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.14 (CPU)       0.00 (elapsed)
+Back end time                        0.07 (CPU)       0.00 (elapsed)
+Total compilation time               0.21 (CPU)       0.00 (elapsed)
+mv text.o text.so
+rm -f nls.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o nls.o /dev/shm/debian-readline/readline-7.0/nls.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.11 (CPU)       0.00 (elapsed)
+mv nls.o nls.so
+rm -f misc.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o misc.o /dev/shm/debian-readline/readline-7.0/misc.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.13 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.16 (CPU)       0.00 (elapsed)
+mv misc.o misc.so
+rm -f history.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o history.o /dev/shm/debian-readline/readline-7.0/history.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.12 (CPU)       0.00 (elapsed)
+mv history.o history.so
+rm -f histexpand.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o histexpand.o /dev/shm/debian-readline/readline-7.0/histexpand.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.13 (CPU)       0.00 (elapsed)
+Back end time                        0.07 (CPU)       0.00 (elapsed)
+Total compilation time               0.20 (CPU)       0.00 (elapsed)
+mv histexpand.o histexpand.so
+rm -f histfile.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o histfile.o /dev/shm/debian-readline/readline-7.0/histfile.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.03 (CPU)       0.00 (elapsed)
+Total compilation time               0.14 (CPU)       0.00 (elapsed)
+mv histfile.o histfile.so
+rm -f histsearch.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o histsearch.o /dev/shm/debian-readline/readline-7.0/histsearch.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+mv histsearch.o histsearch.so
+rm -f shell.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o shell.o /dev/shm/debian-readline/readline-7.0/shell.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.09 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+mv shell.o shell.so
+rm -f mbutil.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o mbutil.o /dev/shm/debian-readline/readline-7.0/mbutil.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.12 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       1.00 (elapsed)
+Total compilation time               0.15 (CPU)       1.00 (elapsed)
+mv mbutil.o mbutil.so
+rm -f tilde.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -DREADLINE_LIBRARY -c -o tilde.o /dev/shm/debian-readline/readline-7.0/tilde.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.06 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.08 (CPU)       0.00 (elapsed)
+mv tilde.o tilde.so
+rm -f colors.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o colors.o /dev/shm/debian-readline/readline-7.0/colors.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+mv colors.o colors.so
+rm -f parse-colors.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o parse-colors.o /dev/shm/debian-readline/readline-7.0/parse-colors.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.08 (CPU)       0.00 (elapsed)
+Back end time                        0.02 (CPU)       0.00 (elapsed)
+Total compilation time               0.10 (CPU)       0.00 (elapsed)
+mv parse-colors.o parse-colors.so
+rm -f xmalloc.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o xmalloc.o /dev/shm/debian-readline/readline-7.0/xmalloc.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.05 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.06 (CPU)       0.00 (elapsed)
+mv xmalloc.o xmalloc.so
+rm -f xfree.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o xfree.o /dev/shm/debian-readline/readline-7.0/xfree.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.03 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.04 (CPU)       0.00 (elapsed)
+mv xfree.o xfree.so
+rm -f compat.so
+ccache icc -c -DHAVE_CONFIG_H   -I. -I.. -I/dev/shm/debian-readline/readline-7.0 -Wdate-time -D_FORTIFY_SOURCE=2 -DRL_LIBRARY_VERSION='"7.0"' -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -fpic -D_REENTRANT -o compat.o /dev/shm/debian-readline/readline-7.0/compat.c 
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.03 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.04 (CPU)       0.00 (elapsed)
+mv compat.o compat.so
+rm -f libreadline.so.7.0
+ccache icc -shared -Wl,-soname,`basename libreadline.so.7.0 .0` -o libreadline.so.7.0 readline.so vi_mode.so funmap.so keymaps.so parens.so search.so rltty.so complete.so bind.so isearch.so display.so signals.so util.so kill.so undo.so macro.so input.so callback.so terminal.so text.so nls.so misc.so history.so histexpand.so histfile.so histsearch.so shell.so mbutil.so tilde.so colors.so parse-colors.so xmalloc.so xfree.so compat.so -ltinfo
+rm -f libhistory.so.7.0
+ccache icc -shared -Wl,-soname,`basename libhistory.so.7.0 .0` -o libhistory.so.7.0 history.so histexpand.so histfile.so histsearch.so shell.so mbutil.so xmalloc.so xfree.so -ltinfo
+make[2]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/shlib'
+make[1]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build'
+/usr/bin/make -C /dev/shm/debian-readline/readline-7.0/build/doc info
+make[1]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/doc'
+LANGUAGE= makeinfo --no-split -I /dev/shm/debian-readline/readline-7.0/doc -o readline.info /dev/shm/debian-readline/readline-7.0/doc/rlman.texi
+LANGUAGE= makeinfo --no-split -I /dev/shm/debian-readline/readline-7.0/doc -o history.info /dev/shm/debian-readline/readline-7.0/doc/history.texi
+LANGUAGE= makeinfo --no-split -I /dev/shm/debian-readline/readline-7.0/doc -o rluserman.info /dev/shm/debian-readline/readline-7.0/doc/rluserman.texi
+make[1]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/doc'
+touch build-stamp
+dh_testdir
+ln -sf libhistory.so.7.0 \
+    /dev/shm/debian-readline/readline-7.0/build/shlib/libhistory.so.7
+ln -sf libhistory.so.7 /dev/shm/debian-readline/readline-7.0/build/shlib/libhistory.so
+ln -sf libreadline.so.7.0 \
+    /dev/shm/debian-readline/readline-7.0/build/shlib/libreadline.so.7
+ln -sf libreadline.so.7 /dev/shm/debian-readline/readline-7.0/build/shlib/libreadline.so
+rm -rf /dev/shm/debian-readline/readline-7.0/build/examples/rlfe
+cp -a examples/rlfe /dev/shm/debian-readline/readline-7.0/build/examples/
+ln -sf ../../.. /dev/shm/debian-readline/readline-7.0/build/examples/rlfe/readline
+cd /dev/shm/debian-readline/readline-7.0/build/examples/rlfe \
+	&& ./configure --prefix=/usr --host=x86_64-linux-gnu
+configure: loading site script /usr/share/config.site
+checking for x86_64-linux-gnu-gcc... ccache icc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether ccache icc accepts -g... yes
+checking for ccache icc option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache /usr/bin/cpp.intel
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking whether ccache icc needs -traditional... no
+checking for library containing strerror... none required
+checking for gawk... /usr/bin/gawk
+configure: checking for System V...
+configure: checking for Solaris 2.x...
+configure: checking select...
+configure: checking select return value...
+- select is ok
+configure: checking for tgetent...
+configure: checking libcurses...
+- you use the terminfo database
+configure: checking ospeed...
+configure: checking for /dev/ptc...
+configure: checking for SVR4 ptys...
+checking for getpt... yes
+configure: checking for ptyranges...
+configure: checking default tty permissions/group...
+checking for write... /usr/bin/write
+checking for xterm... no
+- pty mode: 0620, group: 5
+configure: checking return type of signal handlers...
+configure: checking sigset...
+configure: checking signal implementation...
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking sys/stropts.h usability... yes
+checking sys/stropts.h presence... yes
+checking for sys/stropts.h... yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking sgtty.h usability... yes
+checking sgtty.h presence... yes
+checking for sgtty.h... yes
+checking sys/select.h usability... yes
+checking sys/select.h presence... yes
+checking for sys/select.h... yes
+checking term.h usability... yes
+checking term.h presence... yes
+checking for term.h... yes
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating config.h
+/usr/bin/make -C /dev/shm/debian-readline/readline-7.0/build/examples/rlfe \
+    CFLAGS="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -D_GNU_SOURCE" CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2" \
+    LDFLAGS=" -g -L/dev/shm/debian-readline/readline-7.0/build/shlib" \
+    LIBS="-lreadline -ltinfo -lutil" rlfe
+make[1]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/examples/rlfe'
+ccache icc -c -I. -I. -Wdate-time -D_FORTIFY_SOURCE=2    -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -D_GNU_SOURCE rlfe.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+rlfe.c(216): warning #2218: result of call is not used
+     chown(name, getuid(), gid);
+     ^
+
+rlfe.c(308): warning #2218: result of call is not used
+        write (out_to_inferior_fd, buf, 1);
+        ^
+
+rlfe.c(345): warning #2218: result of call is not used
+        write (out_to_inferior_fd, line, length);
+        ^
+
+rlfe.c(348): warning #2218: result of call is not used
+            write (out_to_inferior_fd, enter, sizeof(enter)-1);
+            ^
+
+rlfe.c(359): warning #2218: result of call is not used
+        write (out_to_inferior_fd, &pending_special_char, 1);
+        ^
+
+rlfe.c(655): warning #2218: result of call is not used
+  	      write (out_to_inferior_fd, ch, count);
+  	      ^
+
+rlfe.c(693): warning #2218: result of call is not used
+  			write (1, "\r", 1);
+  			^
+
+rlfe.c(736): warning #2218: result of call is not used
+              write (1, buf + buf_count, count);
+              ^
+
+Front end time                       0.14 (CPU)       0.00 (elapsed)
+Back end time                        0.04 (CPU)       0.00 (elapsed)
+Total compilation time               0.18 (CPU)       0.00 (elapsed)
+ccache icc -c -I. -I. -Wdate-time -D_FORTIFY_SOURCE=2    -g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -D_GNU_SOURCE pty.c
+icc: command line warning #10006: ignoring unknown option '-fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=.'
+Front end time                       0.10 (CPU)       0.00 (elapsed)
+Back end time                        0.01 (CPU)       0.00 (elapsed)
+Total compilation time               0.11 (CPU)       0.00 (elapsed)
+ccache icc -g -L/dev/shm/debian-readline/readline-7.0/build/shlib -o rlfe rlfe.o pty.o -lreadline -ltinfo -lutil
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/ipo_iccnlXiMm.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/ipo_iccnlXiMm.o
+x86_64-linux-gnu-ld: /dev/shm/debian-readline/readline-7.0/build/shlib/libreadline.so: undefined reference to `__must_be_linked_with_icc_or_xild'
+make[1]: [Makefile:52: rlfe] Error 1 (ignored)
+make[1]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/examples/rlfe'
+touch build-rlfe-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_prep
+rm -rf debian/tmp
+mkdir -p debian/tmp/usr/bin
+/usr/bin/make -C /dev/shm/debian-readline/readline-7.0/build install \
+    CFLAGS="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw" CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2 -D_REENTRANT" \
+    SHOBJ_LDFLAGS='-shared ' \
+    SHLIB_XLDFLAGS='-Wl,-soname,`echo $@ | sed s/\\..$$//`' \
+    SHLIB_LIBS=-ltinfo \
+    DESTDIR=/dev/shm/debian-readline/readline-7.0/debian/tmp \
+    mandir=/usr/share/man \
+    infodir=/usr/share/info
+make[1]: Entering directory '/dev/shm/debian-readline/readline-7.0/build'
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/mkinstalldirs /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/include \
+	/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/include/readline /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu \
+	/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/man/man3 /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/doc/readline
+mkdir -p -- /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/include /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/include/readline /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/man/man3 /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/doc/readline
+for f in readline.h chardefs.h keymaps.h history.h tilde.h rlstdc.h rlconf.h rltypedefs.h; do \
+	/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/$f /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/include/readline ; \
+done
+/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/CHANGES /dev/shm/debian-readline/readline-7.0/INSTALL /dev/shm/debian-readline/readline-7.0/README /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/doc/readline
+( if test -d doc ; then \
+	cd doc && \
+	/usr/bin/make -iw infodir=/usr/share/info DESTDIR=/dev/shm/debian-readline/readline-7.0/debian/tmp install; \
+  fi )
+make[2]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/doc'
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/mkdirs /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/man/man3
+if test -n "" ; then \
+	/bin/sh /dev/shm/debian-readline/readline-7.0/support/mkdirs /dev/shm/debian-readline/readline-7.0/debian/tmp ; \
+fi
+if test -f readline.info; then \
+	/usr/bin/install -m 644 readline.info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/readline.info; \
+else \
+	/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/readline.info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/readline.info; \
+fi
+if test -f rluserman.info; then \
+	/usr/bin/install -m 644 rluserman.info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/rluserman.info; \
+else \
+	/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/rluserman.info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/rluserman.info; \
+fi
+if test -f history.info; then \
+	/usr/bin/install -m 644 history.info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/history.info; \
+else \
+	/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/history.info /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/history.info; \
+fi
+if /bin/sh -c 'install-info --version' >/dev/null 2>&1; then \
+	install-info --dir-file=/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/dir \
+		/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/readline.info ; \
+	install-info --dir-file=/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/dir \
+		/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/history.info ; \
+	install-info --dir-file=/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/dir \
+		/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/info/rluserman.info ; \
+else true; fi
+/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/readline.3 /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/man/man3/readline.3
+/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/history.3 /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/man/man3/history.3
+if test -n "" ; then \
+	if test -f readline.html; then \
+		/usr/bin/install -m 644 readline.html /dev/shm/debian-readline/readline-7.0/debian/tmp/readline.html; \
+	else \
+		/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/readline.html /dev/shm/debian-readline/readline-7.0/debian/tmp/readline.html; \
+	fi ; \
+	if test -f history.html; then \
+		/usr/bin/install -m 644 history.html /dev/shm/debian-readline/readline-7.0/debian/tmp/history.html; \
+	else \
+		/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/history.html /dev/shm/debian-readline/readline-7.0/debian/tmp/history.html; \
+	fi ; \
+	if test -f rluserman.html; then \
+		/usr/bin/install -m 644 rluserman.html /dev/shm/debian-readline/readline-7.0/debian/tmp/rluserman.html; \
+	else \
+		/usr/bin/install -m 644 /dev/shm/debian-readline/readline-7.0/doc/rluserman.html /dev/shm/debian-readline/readline-7.0/debian/tmp/rluserman.html; \
+	fi ; \
+fi
+make[2]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/doc'
+( cd examples ; /usr/bin/make -iw DESTDIR=/dev/shm/debian-readline/readline-7.0/debian/tmp install )
+make[2]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/examples'
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/mkdirs /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/readline
+mkdir /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/share/readline
+make[2]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/examples'
+mv /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libreadline.a /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libreadline.old
+mv: cannot stat '/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libreadline.a': No such file or directory
+make[1]: [Makefile:236: install-static] Error 1 (ignored)
+/usr/bin/install -m 644 libreadline.a /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libreadline.a
+test -n "x86_64-linux-gnu-ranlib" && x86_64-linux-gnu-ranlib /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libreadline.a
+mv /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libhistory.a /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libhistory.old
+mv: cannot stat '/dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libhistory.a': No such file or directory
+make[1]: [Makefile:239: install-static] Error 1 (ignored)
+/usr/bin/install -m 644 libhistory.a /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libhistory.a
+test -n "x86_64-linux-gnu-ranlib" && x86_64-linux-gnu-ranlib /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu/libhistory.a
+test -d shlib || mkdir shlib
+( cd shlib ; /usr/bin/make -iw all )
+make[2]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/shlib'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/shlib'
+( cd shlib ; /usr/bin/make -iw DESTDIR=/dev/shm/debian-readline/readline-7.0/debian/tmp install )
+make[2]: Entering directory '/dev/shm/debian-readline/readline-7.0/build/shlib'
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/mkdirs /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/mkdirs /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/bin
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/shlib-install -O linux-gnu -V pc -d /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu -b /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/bin -i "/usr/bin/install -m 644" libhistory.so.7.0
+/bin/sh /dev/shm/debian-readline/readline-7.0/support/shlib-install -O linux-gnu -V pc -d /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/lib/x86_64-linux-gnu -b /dev/shm/debian-readline/readline-7.0/debian/tmp/usr/bin -i "/usr/bin/install -m 644" libreadline.so.7.0
+install: you may need to run ldconfig
+make[2]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build/shlib'
+make[1]: Leaving directory '/dev/shm/debian-readline/readline-7.0/build'
+: # move libreadline7
+dh_installdirs -plibreadline7 \
+	etc \
+	lib/x86_64-linux-gnu \
+	usr/share/doc
+cp -a debian/tmp/usr/lib/x86_64-linux-gnu/lib{history,readline}.so.* debian/libreadline7/lib/x86_64-linux-gnu/
+: # move readline-common
+dh_installdirs -preadline-common \
+	etc \
+	usr/share/readline \
+	usr/share/info \
+	usr/share/doc
+mv debian/tmp/usr/share/man debian/readline-common/usr/share/.
+mv debian/readline-common/usr/share/man/man3/history.3 \
+	debian/readline-common/usr/share/man/man3/history.3readline
+mv debian/readline-common/usr/share/man/man3/readline.3 \
+	debian/readline-common/usr/share/man/man3/readline.3readline
+mv debian/tmp/usr/share/info/rluserman.info debian/readline-common/usr/share/info/.
+install -m 644 debian/inputrc debian/readline-common/usr/share/readline/
+: # move libreadline-dev
+dh_installdirs -plibreadline-dev \
+	usr/lib/x86_64-linux-gnu/ \
+	usr/share/doc \
+	usr/share/info
+ln -s /lib/x86_64-linux-gnu/libhistory.so.7 \
+	debian/libreadline-dev/usr/lib/x86_64-linux-gnu/libhistory.so
+ln -s /lib/x86_64-linux-gnu/libreadline.so.7 \
+	debian/libreadline-dev/usr/lib/x86_64-linux-gnu/libreadline.so
+mv debian/tmp/usr/lib/x86_64-linux-gnu/lib{history,readline}.a \
+	debian/libreadline-dev/usr/lib/x86_64-linux-gnu/.
+mv debian/tmp/usr/include debian/libreadline-dev/usr/.
+: # remove HAVE_CONFIG_H from installed headers
+awk '/^#if defined \(HAVE_CONFIG_H\)/, /^#endif/ \
+     {if ($0 == "#else") print "#include <string.h>"; next} {print}' \
+  debian/libreadline-dev/usr/include/readline/chardefs.h \
+  > debian/libreadline-dev/usr/include/readline/chardefs.h.new
+if diff -u debian/libreadline-dev/usr/include/readline/chardefs.h \
+	debian/libreadline-dev/usr/include/readline/chardefs.h.new; \
+then \
+  rm -f debian/libreadline-dev/usr/include/readline/chardefs.h.new; \
+else \
+  mv -f debian/libreadline-dev/usr/include/readline/chardefs.h.new \
+    debian/libreadline-dev/usr/include/readline/chardefs.h; \
+fi
+--- debian/libreadline-dev/usr/include/readline/chardefs.h	2018-12-28 12:31:09.998011639 +0100
++++ debian/libreadline-dev/usr/include/readline/chardefs.h.new	2018-12-28 12:31:10.965997333 +0100
+@@ -24,19 +24,7 @@
+ 
+ #include <ctype.h>
+ 
+-#if defined (HAVE_CONFIG_H)
+-#  if defined (HAVE_STRING_H)
+-#    if ! defined (STDC_HEADERS) && defined (HAVE_MEMORY_H)
+-#      include <memory.h>
+-#    endif
+-#    include <string.h>
+-#  endif /* HAVE_STRING_H */
+-#  if defined (HAVE_STRINGS_H)
+-#    include <strings.h>
+-#  endif /* HAVE_STRINGS_H */
+-#else
+-#  include <string.h>
+-#endif /* !HAVE_CONFIG_H */
++#include <string.h>
+ 
+ #ifndef whitespace
+ #define whitespace(c) (((c) == ' ') || ((c) == '\t'))
+: # install rlfe
+dh_installdirs -prlfe \
+    usr/bin usr/share/man/man1 \
+    usr/share/doc/rlfe
+cp -p /dev/shm/debian-readline/readline-7.0/build/examples/rlfe/rlfe debian/rlfe/usr/bin/.
+cp: cannot stat '/dev/shm/debian-readline/readline-7.0/build/examples/rlfe/rlfe': No such file or directory
+make: [debian/rules:236: install-stamp] Error 1 (ignored)
+cp -p debian/rlfe.1 debian/rlfe/usr/share/man/man1/.
+: # readline-doc
+mkdir -p debian/readline-doc/usr/share/info
+mv debian/tmp/usr/share/info/{readline.info,history.info} \
+	debian/readline-doc/usr/share/info/.
+touch install-stamp
+dh_testdir
+dh_testroot
+mkdir -p debian/readline-doc/usr/share/doc/libreadline7/examples
+cp -p /dev/shm/debian-readline/readline-7.0/build/examples/Makefile examples/*.c \
+	debian/readline-doc/usr/share/doc/libreadline7/examples/
+sed -i \
+  -e '/^srcdir =/s,=.*,= /usr/share/doc/libreadline7/examples,' \
+  -e '/^VPATH =/s,=.*,= .:/usr/share/doc/libreadline7/examples,' \
+  -e '/^top_srcdir =/s,=.*,= /usr/include/readline,' \
+  -e '/^BUILD_DIR =/s,=.*,= /usr/src/readline6/build,' \
+  debian/readline-doc/usr/share/doc/libreadline7/examples/Makefile
+dh_link -preadline-doc \
+  /usr/share/doc/libreadline7/examples /usr/share/doc/readline-doc/examples
+mkdir -p debian/readline-common/usr/share/lintian/overrides
+cp -p debian/readline-common.overrides \
+	debian/readline-common/usr/share/lintian/overrides/readline-common
+dh_installdocs -preadline-common debian/inputrc.arrows
+dh_installdocs -preadline-doc
+dh_installchangelogs -i
+dh_installdocs -i
+dh_fixperms -i
+dh_compress -i
+dh_installdeb -i
+dh_gencontrol -i
+dh_md5sums -i
+dh_builddeb -i
+dpkg-deb: building package 'readline-common' in '../readline-common_7.0-5_all.deb'.
+dpkg-deb: building package 'readline-doc' in '../readline-doc_7.0-5_all.deb'.
+dh_testdir
+dh_testroot
+dh_installdocs -plibreadline7 \
+	USAGE debian/inputrc.arrows
+dh_installchangelogs -plibreadline7 CHANGES
+dh_installexamples -plibreadline7 \
+	examples/Inputrc
+ln -sf libreadline7 debian/libreadline-dev/usr/share/doc/libreadline-dev
+dh_installdocs -prlfe examples/rlfe/README
+dh_installchangelogs -prlfe examples/rlfe/ChangeLog
+dh_fixperms -plibreadline7 -plibreadline-dev -prlfe
+dh_strip -plibreadline7 -plibreadline-dev -prlfe
+dh_compress -plibreadline7 -plibreadline-dev -prlfe \
+	-X.c -XMakefile
+dh_makeshlibs -plibreadline7
+cp -p debian/libreadline7.shlibs debian/shlibs.local
+dh_shlibdeps -plibreadline7 -plibreadline-dev -prlfe \
+	 -L libreadline7 -l debian/libreadline7/lib
+dpkg-shlibdeps: warning: deprecated use of LD_LIBRARY_PATH with private library directory which interferes with cross-building, please use -l option instead
+dpkg-shlibdeps: warning: symbol __must_be_linked_with_icc_or_xild used by debian/libreadline7/lib/x86_64-linux-gnu/libhistory.so.7.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol __must_be_linked_with_icc_or_xild used by debian/libreadline7/lib/x86_64-linux-gnu/libreadline.so.7.0 found in none of the libraries
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libreadline7/lib/x86_64-linux-gnu/libhistory.so.7.0 debian/libreadline7/lib/x86_64-linux-gnu/libreadline.so.7.0 were not linked against libgcc_s.so.1 (they use none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libreadline7/lib/x86_64-linux-gnu/libreadline.so.7.0 was not linked against libtinfo.so.6 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libreadline7/lib/x86_64-linux-gnu/libhistory.so.7.0 debian/libreadline7/lib/x86_64-linux-gnu/libreadline.so.7.0 were not linked against libdl.so.2 (they use none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libreadline7/lib/x86_64-linux-gnu/libhistory.so.7.0 debian/libreadline7/lib/x86_64-linux-gnu/libreadline.so.7.0 were not linked against libpthread.so.0 (they use none of the library's symbols)
+dh_installdeb -s
+dh_installdeb: -s/--same-arch is deprecated; please use -a/--arch instead
+dh_installdeb: This feature will be removed in compat 12.
+dh_gencontrol -s 
+dh_gencontrol: -s/--same-arch is deprecated; please use -a/--arch instead
+dh_gencontrol: This feature will be removed in compat 12.
+dpkg-gencontrol: warning: Depends field of package rlfe: substitution variable ${shlibs:Depends} used, but is not defined
+dh_md5sums -s
+dh_md5sums: -s/--same-arch is deprecated; please use -a/--arch instead
+dh_md5sums: This feature will be removed in compat 12.
+dh_builddeb -s
+dh_builddeb: -s/--same-arch is deprecated; please use -a/--arch instead
+dh_builddeb: This feature will be removed in compat 12.
+dpkg-deb: building package 'libreadline7' in '../libreadline7_7.0-5_amd64.deb'.
+dpkg-deb: building package 'libreadline7-dbgsym' in '../libreadline7-dbgsym_7.0-5_amd64.deb'.
+dpkg-deb: building package 'libreadline-dev' in '../libreadline-dev_7.0-5_amd64.deb'.
+dpkg-deb: building package 'rlfe' in '../rlfe_7.0-5_amd64.deb'.
+FAKEROOTKEY=1878931348 LD_LIBRARY_PATH=:/opt/intel/lib/intel64:/opt/intel/compilers_and_libraries/linux/mpi/intel64/libfabric/lib:/opt/intel/compilers_and_libraries/linux/mpi/intel64/lib/release:/opt/intel/compilers_and_libraries/linux/mpi/intel64/lib:/opt/intel/tbb/lib/intel64/gcc4.7 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../readline_7.0-5_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-source: info: unapplying readline70-005.diff
+dpkg-source: info: unapplying readline70-004.diff
+dpkg-source: info: unapplying rlfe-signal-rvt.diff
+dpkg-source: info: unapplying configure-tinfo.diff
+dpkg-source: info: unapplying fix-wformat-security.diff
+dpkg-source: info: unapplying rlfe-tinfo.diff
+dpkg-source: info: unapplying rlfe-kfreebsd.diff
+dpkg-source: info: unapplying rlfe-history.diff
+dpkg-source: info: unapplying rl-no-rpath.diff
+dpkg-source: info: unapplying rl-no-cross-check.diff
+dpkg-source: info: unapplying rl-header.diff
+dpkg-source: info: unapplying rl-attribute.diff
+dpkg-source: info: unapplying readline70-003.diff
+dpkg-source: info: unapplying readline70-002.diff
+dpkg-source: info: unapplying readline70-001.diff
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian readline_7.0-5_amd64.changes ...
+W: libreadline7: excessive-priority-for-library-package important
+W: libreadline7-dbgsym: debug-file-with-no-debug-symbols usr/lib/debug/.build-id/20/3436439417e0288c7ae78c3a268415b1e9e105.debug
+W: libreadline7-dbgsym: debug-file-with-no-debug-symbols usr/lib/debug/.build-id/79/d3bcb9922ee6973d587ace5d7e90ba206d9ffd.debug
+N: 2 tags overridden (2 warnings)
+Finished running lintian.

@@ -1,0 +1,231 @@
+Format: 1.0
+Source: readline
+Binary: libreadline7 readline-common libreadline-dev rlfe readline-doc
+Architecture: all amd64
+Version: 7.0-5
+Checksums-Md5:
+ c82714c93e3339862cb3783fc193228e 1485084 libreadline-dev_7.0-5_amd64.deb
+ f625c1f59dfaa36c9f562c13f1cb2706 8852 libreadline7-dbgsym_7.0-5_amd64.deb
+ c9fb32c624e1cc0249e3869965c21e10 49064 libreadline7_7.0-5_amd64.deb
+ d182be5b075d6fd9edd0f46b418e0416 70348 readline-common_7.0-5_all.deb
+ c4840c1306275ddcc26bca8b236534e7 117724 readline-doc_7.0-5_all.deb
+ f9425ef7cbb02e83a65c6cc67225f600 11884 rlfe_7.0-5_amd64.deb
+Checksums-Sha1:
+ 84edeef4e0daa8e51d3d9ea7a41b7e44d10a4a2a 1485084 libreadline-dev_7.0-5_amd64.deb
+ 1f6e394ae437d0ec56388b2476bd27e1d0cd0db8 8852 libreadline7-dbgsym_7.0-5_amd64.deb
+ dd726b7637e4f4bb7024eccb1188133d7d445415 49064 libreadline7_7.0-5_amd64.deb
+ abdaf3b66d08bb3d61a48eed1b4d51532f695605 70348 readline-common_7.0-5_all.deb
+ 8f2cfe413b7b995cba8c9d1aa73056922744320b 117724 readline-doc_7.0-5_all.deb
+ 2ae6574e25fd756d1cb3da33903a5f425264ee12 11884 rlfe_7.0-5_amd64.deb
+Checksums-Sha256:
+ d500a80def85f207d4bdf750f24cab06e79e1581fa1d8c77b69480e6c2300703 1485084 libreadline-dev_7.0-5_amd64.deb
+ df88c50da2e4f1d3a644effc091839e118955fd116c26f2f3dccdf839ad33eae 8852 libreadline7-dbgsym_7.0-5_amd64.deb
+ 23c3b36eeeba4acfb57c7e05a0c42d3016a4cf35c7701b95a4c3c4609916de0f 49064 libreadline7_7.0-5_amd64.deb
+ 7d052e6fe1889c1fb331dffc2809c2d00b618253b4560d1f6d024174b84940af 70348 readline-common_7.0-5_all.deb
+ a0edba30a0d1ee5afb297814e6724226a3a3c77aace4b440f3f0008a0f68dbf8 117724 readline-doc_7.0-5_all.deb
+ 42fa237488c8fdfacd7de351470c85f2f91199ae3fe3bd0acab3ecf477646a12 11884 rlfe_7.0-5_amd64.deb
+Build-Origin: Debian
+Build-Architecture: amd64
+Build-Date: Fri, 28 Dec 2018 12:31:27 +0100
+Installed-Build-Depends:
+ autoconf (= 2.69-11),
+ automake (= 1:1.16.1-4),
+ autopoint (= 0.19.8.1-2),
+ autotools-dev (= 20180224.1),
+ base-files (= 10.1),
+ base-passwd (= 3.5.45),
+ bash (= 4.4.18-3.1),
+ binutils (= 2.31.1-11),
+ binutils-common (= 2.31.1-11),
+ binutils-x86-64-linux-gnu (= 2.31.1-11),
+ bsdmainutils (= 11.1.2+b1),
+ bsdutils (= 1:2.32.1-0.1),
+ build-essential (= 12.5),
+ bzip2 (= 1.0.6-9),
+ coreutils (= 8.30-1),
+ cpp (= 4:8.2.0-2),
+ cpp-7 (= 7.3.0-30),
+ cpp-8 (= 8.2.0-9),
+ dash (= 0.5.10.2-2),
+ debconf (= 1.5.69),
+ debhelper (= 11.5.4),
+ debianutils (= 4.8.6),
+ dh-autoreconf (= 19),
+ dh-strip-nondeterminism (= 0.45.0-1),
+ diffutils (= 1:3.6-1),
+ dpkg (= 1.19.2),
+ dpkg-dev (= 1.19.2),
+ dwz (= 0.12-2),
+ fdisk (= 2.32.1-0.1),
+ file (= 1:5.35-1),
+ findutils (= 4.6.0+git+20181018-1),
+ g++ (= 4:8.2.0-2),
+ g++-8 (= 8.2.0-9),
+ gawk (= 1:4.2.1+dfsg-1),
+ gcc (= 4:8.2.0-2),
+ gcc-7 (= 7.3.0-30),
+ gcc-7-base (= 7.3.0-30),
+ gcc-8 (= 8.2.0-9),
+ gcc-8-base (= 8.2.0-9),
+ gcc-8-multilib (= 8.2.0-9),
+ gcc-multilib (= 4:8.2.0-2),
+ gettext (= 0.19.8.1-2),
+ gettext-base (= 0.19.8.1-2),
+ grep (= 3.1-2),
+ groff-base (= 1.22.3-10),
+ gzip (= 1.9-2),
+ hostname (= 3.21),
+ init-system-helpers (= 1.56),
+ install-info (= 6.5.0.dfsg.1-4),
+ intel-comp-ps-ss-bec-19.0.1-144 (= 19.0.1-144),
+ intltool-debian (= 0.35.0+20060710.4),
+ lib32asan5 (= 8.2.0-9),
+ lib32atomic1 (= 8.2.0-9),
+ lib32gcc-8-dev (= 8.2.0-9),
+ lib32gcc1 (= 1:8.2.0-9),
+ lib32gomp1 (= 8.2.0-9),
+ lib32itm1 (= 8.2.0-9),
+ lib32mpx2 (= 8.2.0-9),
+ lib32ncurses-dev (= 6.1+20181013-1),
+ lib32ncurses6 (= 6.1+20181013-1),
+ lib32ncursesw6 (= 6.1+20181013-1),
+ lib32quadmath0 (= 8.2.0-9),
+ lib32stdc++6 (= 8.2.0-9),
+ lib32tinfo6 (= 6.1+20181013-1),
+ lib32ubsan1 (= 8.2.0-9),
+ libacl1 (= 2.2.52-3+b1),
+ libarchive-zip-perl (= 1.64-1),
+ libasan4 (= 7.3.0-30),
+ libasan5 (= 8.2.0-9),
+ libatomic1 (= 8.2.0-9),
+ libattr1 (= 1:2.4.47-2+b2),
+ libaudit-common (= 1:2.8.4-3),
+ libaudit1 (= 1:2.8.4-3),
+ libbinutils (= 2.31.1-11),
+ libblkid1 (= 2.32.1-0.1),
+ libbsd0 (= 0.9.1-1),
+ libbz2-1.0 (= 1.0.6-9),
+ libc-bin (= 2.28-2),
+ libc-dev-bin (= 2.28-2),
+ libc6 (= 2.28-2),
+ libc6-dev (= 2.28-2),
+ libc6-dev-i386 (= 2.28-2),
+ libc6-dev-x32 (= 2.28-2),
+ libc6-i386 (= 2.28-2),
+ libc6-x32 (= 2.28-2),
+ libcap-ng0 (= 0.7.9-1),
+ libcc1-0 (= 8.2.0-9),
+ libcilkrts5 (= 7.3.0-30),
+ libcroco3 (= 0.6.12-2),
+ libdb5.3 (= 5.3.28+dfsg1-0.2),
+ libdebconfclient0 (= 0.245),
+ libdpkg-perl (= 1.19.2),
+ libelf1 (= 0.175-1),
+ libfdisk1 (= 2.32.1-0.1),
+ libffi6 (= 3.2.1-9),
+ libfile-stripnondeterminism-perl (= 0.45.0-1),
+ libgcc-7-dev (= 7.3.0-30),
+ libgcc-8-dev (= 8.2.0-9),
+ libgcc1 (= 1:8.2.0-9),
+ libgcrypt20 (= 1.8.4-3),
+ libgdbm-compat4 (= 1.18.1-2),
+ libgdbm6 (= 1.18.1-2),
+ libglib2.0-0 (= 2.58.1-2),
+ libgmp10 (= 2:6.1.2+dfsg-3),
+ libgomp1 (= 8.2.0-9),
+ libgpg-error0 (= 1.32-3),
+ libicu63 (= 63.1-4),
+ libisl19 (= 0.20-2),
+ libitm1 (= 8.2.0-9),
+ liblsan0 (= 8.2.0-9),
+ liblz4-1 (= 1.8.2-1),
+ liblzma5 (= 5.2.4-1),
+ libmagic-mgc (= 1:5.35-1),
+ libmagic1 (= 1:5.35-1),
+ libmount1 (= 2.32.1-0.1),
+ libmpc3 (= 1.1.0-1),
+ libmpfr6 (= 4.0.1-1),
+ libmpx2 (= 8.2.0-9),
+ libncurses-dev (= 6.1+20181013-1),
+ libncurses6 (= 6.1+20181013-1),
+ libncursesw6 (= 6.1+20181013-1),
+ libpam-modules (= 1.1.8-3.8),
+ libpam-modules-bin (= 1.1.8-3.8),
+ libpam-runtime (= 1.1.8-3.8),
+ libpam0g (= 1.1.8-3.8),
+ libpcre3 (= 2:8.39-11),
+ libperl5.28 (= 5.28.1-1),
+ libpipeline1 (= 1.5.0-2),
+ libquadmath0 (= 8.2.0-9),
+ libseccomp2 (= 2.3.3-4),
+ libselinux1 (= 2.8-1+b1),
+ libsigsegv2 (= 2.12-2),
+ libsmartcols1 (= 2.32.1-0.1),
+ libstdc++-8-dev (= 8.2.0-9),
+ libstdc++6 (= 8.2.0-9),
+ libsystemd0 (= 239-13),
+ libtext-unidecode-perl (= 1.30-1),
+ libtinfo5 (= 6.1+20181013-1),
+ libtinfo6 (= 6.1+20181013-1),
+ libtool (= 2.4.6-6),
+ libtsan0 (= 8.2.0-9),
+ libubsan0 (= 7.3.0-30),
+ libubsan1 (= 8.2.0-9),
+ libudev1 (= 239-13),
+ libunistring0 (= 0.9.6+really0.9.3-0.1),
+ libuuid1 (= 2.32.1-0.1),
+ libx32asan5 (= 8.2.0-9),
+ libx32atomic1 (= 8.2.0-9),
+ libx32gcc-8-dev (= 8.2.0-9),
+ libx32gcc1 (= 1:8.2.0-9),
+ libx32gomp1 (= 8.2.0-9),
+ libx32itm1 (= 8.2.0-9),
+ libx32quadmath0 (= 8.2.0-9),
+ libx32stdc++6 (= 8.2.0-9),
+ libx32ubsan1 (= 8.2.0-9),
+ libxml-libxml-perl (= 2.0132+dfsg-2+b1),
+ libxml-namespacesupport-perl (= 1.12-1),
+ libxml-sax-base-perl (= 1.09-1),
+ libxml-sax-perl (= 1.00+dfsg-2),
+ libxml2 (= 2.9.8-1),
+ linux-libc-dev (= 4.18.20-2),
+ login (= 1:4.5-1.1),
+ m4 (= 1.4.18-2),
+ make (= 4.2.1-1.2),
+ man-db (= 2.8.4-3),
+ mawk (= 1.3.3-17),
+ ncurses-base (= 6.1+20181013-1),
+ ncurses-bin (= 6.1+20181013-1),
+ patch (= 2.7.6-3),
+ perl (= 5.28.1-1),
+ perl-base (= 5.28.1-1),
+ perl-modules-5.28 (= 5.28.1-1),
+ po-debconf (= 1.0.21),
+ sed (= 4.5-2),
+ sensible-utils (= 0.0.12),
+ sysvinit-utils (= 2.92~beta-2),
+ tar (= 1.30+dfsg-3),
+ tex-common (= 6.10),
+ texinfo (= 6.5.0.dfsg.1-4),
+ ucf (= 3.0038),
+ util-linux (= 2.32.1-0.1),
+ xz-utils (= 5.2.4-1),
+ zlib1g (= 1:1.2.11.dfsg-1)
+Environment:
+ AR="xiar"
+ CC="ccache icc"
+ CPP="ccache icc -E"
+ CXX="ccache icpc"
+ DEB_BUILD_OPTIONS="nocheck nodoc parallel=8"
+ DEB_BUILD_PROFILES="nobiarch nocheck nodoc"
+ DEB_CFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security"
+ DEB_CXXFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -Wformat -march=native -pipe -Wformat-security"
+ DEB_FCFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -fstack-protector-strong -march=native -pipe -fstack-security-check"
+ DEB_FFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/debian-readline/readline-7.0=. -fstack-protector-strong -march=native -pipe -fstack-security-check"
+ DEB_LDFLAGS_SET=""
+ DPKG_GENSYMBOLS_CHECK_LEVEL="1"
+ LANG="en_US.UTF-8"
+ LC_CTYPE="en_US.UTF-8"
+ LD_LIBRARY_PATH="/opt/intel/lib/intel64:/opt/intel/compilers_and_libraries/linux/mpi/intel64/libfabric/lib:/opt/intel/compilers_and_libraries/linux/mpi/intel64/lib/release:/opt/intel/compilers_and_libraries/linux/mpi/intel64/lib:/opt/intel/tbb/lib/intel64/gcc4.7"
+ MAKEFLAGS="-i"
+ SOURCE_DATE_EPOCH="1525531966"

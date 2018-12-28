@@ -4,4 +4,5 @@ libreadline7_7.0-5_amd64.deb libs important
 readline-common_7.0-5_all.deb utils important
 readline-doc_7.0-5_all.deb doc optional
 readline_7.0-5_amd64.buildinfo libs important
+rlfe-dbgsym_7.0-5_amd64.deb debug optional automatic=yes
 rlfe_7.0-5_amd64.deb utils optional

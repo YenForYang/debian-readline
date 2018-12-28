@@ -1,0 +1,45 @@
+Format: 1.8
+Date: Sat, 05 May 2018 16:52:46 +0200
+Source: readline
+Binary: libreadline7 readline-common libreadline-dev rlfe readline-doc
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: amd64 all
+Version: 7.0-5
+Distribution: unstable
+Urgency: medium
+Maintainer: Matthias Klose <doko@debian.org>
+Changed-By: Matthias Klose <doko@debian.org>
+Description:
+ libreadline-dev - GNU readline and history libraries, development files
+ libreadline7 - GNU readline and history libraries, run-time libraries
+ readline-common - GNU readline and history libraries, common files
+ readline-doc - GNU readline and history libraries, documentation and examples
+ rlfe       - Front-end using readline to "cook" input lines for other programs
+Changes:
+ readline (7.0-5) unstable; urgency=medium
+ .
+   * More updates for the new ncurses build dependencies.
+Checksums-Sha1:
+ 84edeef4e0daa8e51d3d9ea7a41b7e44d10a4a2a 1485084 libreadline-dev_7.0-5_amd64.deb
+ 1f6e394ae437d0ec56388b2476bd27e1d0cd0db8 8852 libreadline7-dbgsym_7.0-5_amd64.deb
+ dd726b7637e4f4bb7024eccb1188133d7d445415 49064 libreadline7_7.0-5_amd64.deb
+ abdaf3b66d08bb3d61a48eed1b4d51532f695605 70348 readline-common_7.0-5_all.deb
+ 8f2cfe413b7b995cba8c9d1aa73056922744320b 117724 readline-doc_7.0-5_all.deb
+ 9c1670891a6c5a9502afaf6f67275234ef805292 7812 readline_7.0-5_amd64.buildinfo
+ 2ae6574e25fd756d1cb3da33903a5f425264ee12 11884 rlfe_7.0-5_amd64.deb
+Checksums-Sha256:
+ d500a80def85f207d4bdf750f24cab06e79e1581fa1d8c77b69480e6c2300703 1485084 libreadline-dev_7.0-5_amd64.deb
+ df88c50da2e4f1d3a644effc091839e118955fd116c26f2f3dccdf839ad33eae 8852 libreadline7-dbgsym_7.0-5_amd64.deb
+ 23c3b36eeeba4acfb57c7e05a0c42d3016a4cf35c7701b95a4c3c4609916de0f 49064 libreadline7_7.0-5_amd64.deb
+ 7d052e6fe1889c1fb331dffc2809c2d00b618253b4560d1f6d024174b84940af 70348 readline-common_7.0-5_all.deb
+ a0edba30a0d1ee5afb297814e6724226a3a3c77aace4b440f3f0008a0f68dbf8 117724 readline-doc_7.0-5_all.deb
+ b23d13777a1d2ea2ae8e2388894b62fe610187578b9ee0f09e43ce22f85d7ab0 7812 readline_7.0-5_amd64.buildinfo
+ 42fa237488c8fdfacd7de351470c85f2f91199ae3fe3bd0acab3ecf477646a12 11884 rlfe_7.0-5_amd64.deb
+Files:
+ c82714c93e3339862cb3783fc193228e 1485084 libdevel optional libreadline-dev_7.0-5_amd64.deb
+ f625c1f59dfaa36c9f562c13f1cb2706 8852 debug optional libreadline7-dbgsym_7.0-5_amd64.deb
+ c9fb32c624e1cc0249e3869965c21e10 49064 libs important libreadline7_7.0-5_amd64.deb
+ d182be5b075d6fd9edd0f46b418e0416 70348 utils important readline-common_7.0-5_all.deb
+ c4840c1306275ddcc26bca8b236534e7 117724 doc optional readline-doc_7.0-5_all.deb
+ f2bdea5378f7309e5d7eff3bc5d2c57e 7812 libs important readline_7.0-5_amd64.buildinfo
+ f9425ef7cbb02e83a65c6cc67225f600 11884 utils optional rlfe_7.0-5_amd64.deb

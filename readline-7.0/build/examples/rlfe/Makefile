@@ -21,11 +21,11 @@ VERSION = 0.4
 SCREEN = screen-$(VERSION)
 
 CC = ccache icc
-CFLAGS = -g -Wformat -march=native -pipe -Wformat-security -I/usr/include/ncursesw -D_GNU_SOURCE
-CPPFLAGS =  -D_FORTIFY_SOURCE=2
+CFLAGS = -g -O2
+CPPFLAGS = 
 #LDFLAGS = -L$(READLINE_DIR)
-LDFLAGS =  -g -L../../shlib
-LIBS = -lreadline -lhistory -lreadline -ltinfo -lutil
+LDFLAGS = 
+LIBS = -lreadline -lhistory -lcurses 
 
 CPP=ccache /usr/bin/cpp.intel
 CPP_DEPEND=$(CC) -MM

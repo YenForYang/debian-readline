@@ -1,0 +1,12 @@
+Package: rlfe-dbgsym
+Source: readline
+Version: 7.0-5
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Matthias Klose <doko@debian.org>
+Installed-Size: 29
+Depends: rlfe (= 7.0-5)
+Section: debug
+Priority: optional
+Description: debug symbols for rlfe
+Build-Ids: 20f2d30616609bfec2f86064c5171d56e0b95917

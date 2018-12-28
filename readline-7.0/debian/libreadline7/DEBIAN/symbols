@@ -1,6 +1,35 @@
 libhistory.so.7 libreadline7 #MINVER#
+ __cacheSize@Base 7.0-5
+ __intel_avx_rep_memcpy@Base 7.0-5
+ __intel_memcpy@Base 7.0-5
+ __intel_mic_avx512f_memcpy@Base 7.0-5
+ __intel_new_memcpy@Base 7.0-5
+ __intel_sse4_atol@Base 7.0-5
+ __intel_sse4_strchr@Base 7.0-5
+ __intel_sse4_strcpy@Base 7.0-5
+ __intel_sse4_strend@Base 7.0-5
+ __intel_sse4_strlen@Base 7.0-5
+ __intel_sse4_strncmp@Base 7.0-5
+ __intel_sse4_strrchr@Base 7.0-5
+ __intel_ssse3_memcpy@Base 7.0-5
+ __intel_ssse3_memmove@Base 7.0-5
+ __intel_ssse3_rep_memcpy@Base 7.0-5
+ __intel_ssse3_rep_memmove@Base 7.0-5
+ __intel_ssse3_strncpy@Base 7.0-5
  _hs_append_history_line@Base 7.0~rc1
  _hs_replace_history_data@Base 7.0~beta
+ _intel_fast_memcpy.A@Base 7.0-5
+ _intel_fast_memcpy.J@Base 7.0-5
+ _intel_fast_memcpy.M@Base 7.0-5
+ _intel_fast_memcpy.P@Base 7.0-5
+ _intel_fast_memcpy.V@Base 7.0-5
+ _intel_fast_memcpy.Z@Base 7.0-5
+ _intel_fast_memcpy.a@Base 7.0-5
+ _intel_fast_memcpy@Base 7.0-5
+ _intel_fast_memmove.A@Base 7.0-5
+ _intel_fast_memmove.M@Base 7.0-5
+ _intel_fast_memmove.P@Base 7.0-5
+ _intel_fast_memmove@Base 7.0-5
  _rl_adjust_point@Base 6.0
  _rl_char_value@Base 6.0
  _rl_compare_chars@Base 6.0
@@ -73,8 +102,50 @@ libhistory.so.7 libreadline7 #MINVER#
  xmalloc@Base 6.0
  xrealloc@Base 6.0
 libreadline.so.7 libreadline7 #MINVER#
+ __cacheSize@Base 7.0-5
+ __intel_avx_rep_memcpy@Base 7.0-5
+ __intel_avx_rep_memset@Base 7.0-5
+ __intel_memcpy@Base 7.0-5
+ __intel_memset@Base 7.0-5
+ __intel_mic_avx512f_memcpy@Base 7.0-5
+ __intel_mic_avx512f_memset@Base 7.0-5
+ __intel_new_memcpy@Base 7.0-5
+ __intel_new_memset@Base 7.0-5
+ __intel_sse4_atol@Base 7.0-5
+ __intel_sse4_strcat@Base 7.0-5
+ __intel_sse4_strchr@Base 7.0-5
+ __intel_sse4_strcpy@Base 7.0-5
+ __intel_sse4_strend@Base 7.0-5
+ __intel_sse4_strlen@Base 7.0-5
+ __intel_sse4_strncmp@Base 7.0-5
+ __intel_sse4_strpbrk@Base 7.0-5
+ __intel_sse4_strrchr@Base 7.0-5
+ __intel_ssse3_memcpy@Base 7.0-5
+ __intel_ssse3_memmove@Base 7.0-5
+ __intel_ssse3_rep_memcpy@Base 7.0-5
+ __intel_ssse3_rep_memmove@Base 7.0-5
+ __intel_ssse3_strncpy@Base 7.0-5
  _hs_append_history_line@Base 7.0~rc1
  _hs_replace_history_data@Base 7.0~beta
+ _intel_fast_memcmp@Base 7.0-5
+ _intel_fast_memcpy.A@Base 7.0-5
+ _intel_fast_memcpy.J@Base 7.0-5
+ _intel_fast_memcpy.M@Base 7.0-5
+ _intel_fast_memcpy.P@Base 7.0-5
+ _intel_fast_memcpy.V@Base 7.0-5
+ _intel_fast_memcpy.Z@Base 7.0-5
+ _intel_fast_memcpy.a@Base 7.0-5
+ _intel_fast_memcpy@Base 7.0-5
+ _intel_fast_memmove.A@Base 7.0-5
+ _intel_fast_memmove.M@Base 7.0-5
+ _intel_fast_memmove.P@Base 7.0-5
+ _intel_fast_memmove@Base 7.0-5
+ _intel_fast_memset.A@Base 7.0-5
+ _intel_fast_memset.J@Base 7.0-5
+ _intel_fast_memset.V@Base 7.0-5
+ _intel_fast_memset.Z@Base 7.0-5
+ _intel_fast_memset.a@Base 7.0-5
+ _intel_fast_memset@Base 7.0-5
  _rl_abort_internal@Base 6.0
  _rl_add_macro_char@Base 6.0
  _rl_adjust_point@Base 6.0
