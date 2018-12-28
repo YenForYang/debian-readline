@@ -1,0 +1,13 @@
+Package: libreadline7-dbgsym
+Source: readline
+Version: 7.0-5
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Matthias Klose <doko@debian.org>
+Installed-Size: 53
+Depends: libreadline7 (= 7.0-5)
+Section: debug
+Priority: optional
+Multi-Arch: same
+Description: debug symbols for libreadline7
+Build-Ids: 203436439417e0288c7ae78c3a268415b1e9e105 79d3bcb9922ee6973d587ace5d7e90ba206d9ffd

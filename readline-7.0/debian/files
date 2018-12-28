@@ -1,0 +1,7 @@
+libreadline-dev_7.0-5_amd64.deb libdevel optional
+libreadline7-dbgsym_7.0-5_amd64.deb debug optional automatic=yes
+libreadline7_7.0-5_amd64.deb libs important
+readline-common_7.0-5_all.deb utils important
+readline-doc_7.0-5_all.deb doc optional
+readline_7.0-5_amd64.buildinfo libs important
+rlfe_7.0-5_amd64.deb utils optional
